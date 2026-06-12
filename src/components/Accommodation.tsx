@@ -58,10 +58,10 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
             <motion.div 
               key={room.id}
               className="luxury-card room-card"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4 }}
             >
               <div className="room-image-wrapper">
                 <img src={room.image} alt={room.name} className="room-card-image" />
@@ -100,13 +100,13 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
                     onClick={() => handleOpenModal(room)} 
                     className="btn btn-secondary w-full"
                   >
-                    View Details
+                    Details
                   </button>
                   <button 
                     onClick={() => handleBookNow(room.id)} 
                     className="btn btn-primary w-full"
                   >
-                    Book This Room
+                    Book
                   </button>
                 </div>
               </div>
@@ -120,15 +120,15 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         {selectedRoom && (
           <div className="modal-overlay" onClick={handleCloseModal}>
             <motion.div 
-              className="modal-content glass-panel"
+              className="modal-content glass-panel-dark"
               onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 30 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3 }}
             >
               <button className="modal-close-btn" onClick={handleCloseModal} aria-label="Close details">
-                <X size={24} />
+                <X size={20} />
               </button>
 
               <div className="modal-inner-grid">
@@ -144,10 +144,10 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
                     {selectedRoom.images.length > 1 && (
                       <>
                         <button className="nav-carousel-btn prev" onClick={handlePrevImage} aria-label="Previous image">
-                          <ChevronLeft size={20} />
+                          <ChevronLeft size={18} />
                         </button>
                         <button className="nav-carousel-btn next" onClick={handleNextImage} aria-label="Next image">
-                          <ChevronRight size={20} />
+                          <ChevronRight size={18} />
                         </button>
                       </>
                     )}
@@ -177,8 +177,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
                   </div>
 
                   <div className="modal-meta-row">
-                    <span className="meta-pill"><Maximize2 size={14} /> Size: {selectedRoom.size}</span>
-                    <span className="meta-pill"><Users size={14} /> Occupancy: {selectedRoom.occupancy}</span>
+                    <span className="meta-pill"><Maximize2 size={12} /> Size: {selectedRoom.size}</span>
+                    <span className="meta-pill"><Users size={12} /> Occupancy: {selectedRoom.occupancy}</span>
                   </div>
 
                   <p className="modal-description">{selectedRoom.description}</p>
@@ -188,7 +188,7 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
                     <div className="amenities-checklist-grid">
                       {selectedRoom.amenities.map((amenity, idx) => (
                         <div key={idx} className="checklist-item">
-                          <div className="check-bullet"><Check size={14} /></div>
+                          <div className="check-bullet"><Check size={12} /></div>
                           <span>{amenity}</span>
                         </div>
                       ))}
@@ -215,7 +215,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
 
       <style>{`
         .rooms-section {
-          background-color: var(--warm-beige);
+          background-color: var(--bg-deep);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .rooms-grid {
@@ -232,13 +233,14 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         }
 
         .room-card {
-          height: 100%;
+          background-color: var(--bg-card);
         }
 
         .room-image-wrapper {
           position: relative;
           height: 260px;
           overflow: hidden;
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .room-card-image {
@@ -249,30 +251,30 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         }
 
         .room-card:hover .room-card-image {
-          transform: scale(1.05);
+          transform: scale(1.03);
         }
 
         .room-price-badge {
           position: absolute;
           bottom: 1.25rem;
           right: 1.25rem;
-          background: rgba(20, 42, 29, 0.95);
-          color: var(--snow-white);
-          padding: 0.6rem 1.2rem;
+          background: rgba(8, 11, 9, 0.95);
+          color: var(--text-main);
+          padding: 0.5rem 1rem;
           border-radius: var(--radius-sm);
-          font-family: var(--font-sans);
-          border: 1px solid var(--luxury-gold);
+          font-family: var(--font-serif);
+          border: 1px solid var(--accent-gold);
           backdrop-filter: blur(4px);
         }
 
         .room-price-badge .price-val {
           font-weight: 600;
-          font-size: 1.15rem;
-          color: var(--luxury-gold);
+          font-size: 1.1rem;
+          color: var(--accent-gold);
         }
 
         .room-price-badge .price-unit {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           opacity: 0.8;
         }
 
@@ -286,6 +288,7 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         .room-card-title {
           font-size: 1.4rem;
           margin-bottom: 0.75rem;
+          color: var(--accent-gold-bright);
         }
 
         .room-card-desc {
@@ -303,8 +306,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           display: flex;
           gap: 1.5rem;
           padding: 0.75rem 0;
-          border-top: 1px solid var(--beige-dark);
-          border-bottom: 1px solid var(--beige-dark);
+          border-top: 1px solid var(--border-gold);
+          border-bottom: 1px solid var(--border-gold);
           margin-bottom: 1.25rem;
         }
 
@@ -313,8 +316,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           align-items: center;
           gap: 0.5rem;
           font-size: 0.85rem;
-          color: var(--forest-green);
-          font-weight: 500;
+          color: var(--accent-gold);
+          font-family: var(--font-serif);
         }
 
         .room-amenities-pills {
@@ -326,16 +329,17 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
 
         .amenity-pill {
           font-size: 0.75rem;
-          background: var(--beige-dark);
-          color: var(--forest-green);
+          background: rgba(197, 168, 128, 0.08);
+          color: var(--accent-gold-bright);
+          border: 1px solid var(--border-gold);
           padding: 0.35rem 0.75rem;
-          border-radius: var(--radius-full);
-          font-weight: 500;
+          border-radius: var(--radius-sm);
         }
 
         .amenity-pill.extra {
-          background: var(--forest-light);
-          color: var(--snow-white);
+          background: var(--accent-gold);
+          color: var(--bg-deep);
+          font-weight: 600;
         }
 
         .room-card-actions {
@@ -347,7 +351,7 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
 
         .room-card-actions .btn {
           padding: 0.8rem 1rem;
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
 
         /* Modal Details */
@@ -357,8 +361,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(20, 42, 29, 0.75);
-          backdrop-filter: blur(8px);
+          background: rgba(8, 11, 9, 0.85);
+          backdrop-filter: blur(12px);
           z-index: 1100;
           display: flex;
           align-items: center;
@@ -369,12 +373,13 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         .modal-content {
           position: relative;
           width: 100%;
-          max-width: 1100px;
+          max-width: 1050px;
           max-height: 90vh;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow-y: auto;
-          padding: 3rem;
-          background: var(--warm-beige);
+          padding: 2.5rem;
+          background: var(--bg-dark);
+          border: 1px solid var(--border-gold-bright);
         }
 
         @media (max-width: 768px) {
@@ -388,12 +393,12 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           position: absolute;
           top: 1.25rem;
           right: 1.25rem;
-          background: var(--beige-dark);
-          color: var(--forest-green);
-          border: none;
+          background: var(--bg-card);
+          color: var(--text-main);
+          border: 1px solid var(--border-gold);
           width: 36px;
           height: 36px;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -403,8 +408,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         }
 
         .modal-close-btn:hover {
-          background: var(--forest-green);
-          color: var(--snow-white);
+          background: var(--accent-gold);
+          color: var(--bg-deep);
         }
 
         .modal-inner-grid {
@@ -426,6 +431,7 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           border-radius: var(--radius-sm);
           overflow: hidden;
           background: var(--charcoal);
+          border: 1px solid var(--border-gold);
         }
 
         @media (max-width: 480px) {
@@ -444,23 +450,23 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: rgba(250, 248, 245, 0.9);
-          border: none;
+          background: rgba(8, 11, 9, 0.8);
+          border: 1px solid var(--border-gold);
           width: 40px;
           height: 40px;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
           box-shadow: var(--shadow-soft);
           transition: var(--transition-fast);
         }
 
         .nav-carousel-btn:hover {
-          background: var(--forest-green);
-          color: var(--snow-white);
+          background: var(--accent-gold);
+          color: var(--bg-deep);
         }
 
         .nav-carousel-btn.prev { left: 1rem; }
@@ -479,14 +485,14 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           height: 60px;
           border-radius: var(--radius-sm);
           overflow: hidden;
-          border: 2px solid transparent;
+          border: 1px solid transparent;
           cursor: pointer;
           transition: var(--transition-fast);
           flex-shrink: 0;
         }
 
         .thumb-btn.active {
-          border-color: var(--luxury-gold);
+          border-color: var(--accent-gold);
         }
 
         .thumb-btn img {
@@ -517,8 +523,10 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         }
 
         .modal-header h2 {
+          font-family: var(--font-serif);
           font-size: 1.8rem;
           margin-bottom: 0;
+          color: var(--accent-gold-bright);
         }
 
         .modal-pricing {
@@ -533,10 +541,10 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         }
 
         .modal-pricing .price {
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-family: var(--font-serif);
+          font-weight: 500;
           font-size: 1.5rem;
-          color: var(--luxury-gold-dark);
+          color: var(--accent-gold);
         }
 
         .modal-pricing .unit {
@@ -556,16 +564,18 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           gap: 0.4rem;
           font-size: 0.85rem;
           color: var(--text-muted);
-          background: var(--beige-dark);
+          background: var(--bg-card);
           padding: 0.35rem 0.85rem;
           border-radius: var(--radius-sm);
-          font-weight: 500;
+          font-family: var(--font-serif);
+          border: 1px solid var(--border-gold);
         }
 
         .modal-description {
           font-size: 1rem;
-          line-height: 1.6;
+          line-height: 1.7;
           margin-bottom: 2rem;
+          color: var(--text-muted);
         }
 
         .modal-amenities-section {
@@ -573,12 +583,13 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
         }
 
         .modal-amenities-section h3 {
-          font-size: 1.1rem;
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-size: 1.05rem;
+          font-family: var(--font-serif);
+          font-weight: 500;
           margin-bottom: 1rem;
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.1em;
+          color: var(--accent-gold);
         }
 
         .amenities-checklist-grid {
@@ -598,13 +609,14 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           align-items: center;
           gap: 0.75rem;
           font-size: 0.95rem;
+          color: var(--text-muted);
         }
 
         .check-bullet {
           width: 22px;
           height: 22px;
-          background: rgba(20, 42, 29, 0.1);
-          color: var(--forest-green);
+          background: rgba(197, 168, 128, 0.1);
+          color: var(--accent-gold);
           border-radius: var(--radius-full);
           display: flex;
           align-items: center;
@@ -616,8 +628,8 @@ export const Accommodation: React.FC<AccommodationProps> = ({ onSelectRoom }) =>
           display: flex;
           gap: 0.75rem;
           align-items: flex-start;
-          background: rgba(224, 122, 95, 0.08);
-          border-left: 3px solid var(--sunset-orange);
+          background: rgba(224, 122, 95, 0.05);
+          border-left: 2px solid var(--sunset-orange);
           padding: 1rem;
           border-radius: var(--radius-sm);
           margin-bottom: 2rem;

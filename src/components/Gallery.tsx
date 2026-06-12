@@ -76,10 +76,10 @@ export const Gallery: React.FC = () => {
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
                 className="gallery-item"
                 onClick={() => handleOpenLightbox(item)}
               >
@@ -102,16 +102,16 @@ export const Gallery: React.FC = () => {
         {selectedPhoto && (
           <div className="lightbox-backdrop" onClick={handleCloseLightbox}>
             <button className="lightbox-close" onClick={handleCloseLightbox} aria-label="Close Lightbox">
-              <X size={28} />
+              <X size={24} />
             </button>
 
             {GALLERY_ITEMS.length > 1 && (
               <>
                 <button className="lightbox-nav prev" onClick={handlePrevPhoto} aria-label="Previous photo">
-                  <ChevronLeft size={32} />
+                  <ChevronLeft size={24} />
                 </button>
                 <button className="lightbox-nav next" onClick={handleNextPhoto} aria-label="Next photo">
-                  <ChevronRight size={32} />
+                  <ChevronRight size={24} />
                 </button>
               </>
             )}
@@ -119,9 +119,9 @@ export const Gallery: React.FC = () => {
             <motion.div
               className="lightbox-content"
               onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
               transition={{ duration: 0.3 }}
             >
               <img src={selectedPhoto.image} alt={selectedPhoto.title} className="lightbox-img" />
@@ -136,26 +136,26 @@ export const Gallery: React.FC = () => {
 
       <style>{`
         .gallery-section {
-          background-color: var(--beige-dark);
+          background-color: var(--bg-dark);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .gallery-filters {
           display: flex;
           justify-content: center;
           gap: 1rem;
-          margin-bottom: 3rem;
+          margin-bottom: 3.5rem;
           flex-wrap: wrap;
         }
 
         .filter-btn {
           background-color: transparent;
-          border: 1px solid var(--forest-light);
-          color: var(--forest-green);
-          font-family: var(--font-sans);
+          border: 1px solid var(--border-gold);
+          color: var(--text-muted);
+          font-family: var(--font-serif);
           font-size: 0.85rem;
-          font-weight: 500;
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.1em;
           padding: 0.6rem 1.4rem;
           border-radius: var(--radius-sm);
           cursor: pointer;
@@ -164,9 +164,9 @@ export const Gallery: React.FC = () => {
 
         .filter-btn:hover,
         .filter-btn.active {
-          background-color: var(--forest-green);
-          color: var(--snow-white);
-          border-color: var(--forest-green);
+          background-color: var(--accent-gold);
+          color: var(--bg-deep);
+          border-color: var(--accent-gold);
           box-shadow: var(--shadow-soft);
         }
 
@@ -191,12 +191,13 @@ export const Gallery: React.FC = () => {
         .gallery-item {
           break-inside: avoid;
           position: relative;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow: hidden;
           margin-bottom: 1.5rem;
           cursor: pointer;
           box-shadow: var(--shadow-soft);
-          background-color: var(--beige-dark);
+          background-color: var(--bg-card);
+          border: 1px solid var(--border-gold);
           transition: var(--transition-smooth);
         }
 
@@ -214,7 +215,7 @@ export const Gallery: React.FC = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(to top, rgba(20, 42, 29, 0.85) 0%, rgba(20, 42, 29, 0.2) 100%);
+          background: linear-gradient(to top, rgba(8, 11, 9, 0.95) 0%, rgba(8, 11, 9, 0.2) 100%);
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -228,15 +229,15 @@ export const Gallery: React.FC = () => {
         }
 
         .gallery-item:hover .gallery-img {
-          transform: scale(1.05);
+          transform: scale(1.03);
         }
 
         .gallery-overlay-icon {
           align-self: center;
           margin-bottom: auto;
           margin-top: 30%;
-          color: var(--luxury-gold);
-          background: rgba(255, 255, 255, 0.15);
+          color: var(--accent-gold);
+          background: rgba(255, 255, 255, 0.05);
           width: 52px;
           height: 52px;
           border-radius: var(--radius-full);
@@ -246,6 +247,7 @@ export const Gallery: React.FC = () => {
           backdrop-filter: blur(4px);
           transform: translateY(10px);
           transition: var(--transition-smooth);
+          border: 1px solid var(--border-gold);
         }
 
         .gallery-item:hover .gallery-overlay-icon {
@@ -253,17 +255,18 @@ export const Gallery: React.FC = () => {
         }
 
         .gallery-overlay-title {
+          font-family: var(--font-serif);
           font-size: 1.15rem;
-          color: var(--snow-white);
+          color: var(--text-main);
           margin-bottom: 0.25rem;
         }
 
         .gallery-overlay-cat {
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 0.75rem;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
         }
 
         /* Lightbox overlay styles */
@@ -273,8 +276,8 @@ export const Gallery: React.FC = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: rgba(10, 20, 14, 0.95);
-          backdrop-filter: blur(10px);
+          background-color: rgba(8, 11, 9, 0.95);
+          backdrop-filter: blur(12px);
           z-index: 1200;
           display: flex;
           flex-direction: column;
@@ -287,12 +290,12 @@ export const Gallery: React.FC = () => {
           position: absolute;
           top: 1.5rem;
           right: 1.5rem;
-          background: rgba(255, 255, 255, 0.08);
-          border: none;
-          color: var(--snow-white);
-          width: 50px;
-          height: 50px;
-          border-radius: var(--radius-full);
+          background: var(--bg-card);
+          border: 1px solid var(--border-gold);
+          color: var(--text-main);
+          width: 44px;
+          height: 44px;
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -302,18 +305,19 @@ export const Gallery: React.FC = () => {
 
         .lightbox-close:hover {
           background-color: var(--sunset-orange);
+          border-color: var(--sunset-orange);
         }
 
         .lightbox-nav {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: rgba(255, 255, 255, 0.08);
-          border: none;
-          color: var(--snow-white);
-          width: 60px;
-          height: 60px;
-          border-radius: var(--radius-full);
+          background: var(--bg-card);
+          border: 1px solid var(--border-gold);
+          color: var(--accent-gold);
+          width: 52px;
+          height: 52px;
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -322,8 +326,8 @@ export const Gallery: React.FC = () => {
         }
 
         .lightbox-nav:hover {
-          background-color: var(--luxury-gold);
-          color: var(--forest-green);
+          background-color: var(--accent-gold);
+          color: var(--bg-deep);
         }
 
         .lightbox-nav.prev { left: 2rem; }
@@ -331,8 +335,8 @@ export const Gallery: React.FC = () => {
 
         @media (max-width: 768px) {
           .lightbox-nav {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
           }
           .lightbox-nav.prev { left: 0.5rem; }
           .lightbox-nav.next { right: 0.5rem; }
@@ -344,8 +348,9 @@ export const Gallery: React.FC = () => {
           border-radius: var(--radius-sm);
           overflow: hidden;
           box-shadow: var(--shadow-premium);
-          background-color: var(--charcoal);
+          background-color: var(--bg-deep);
           position: relative;
+          border: 1px solid var(--border-gold-bright);
         }
 
         .lightbox-img {
@@ -356,21 +361,21 @@ export const Gallery: React.FC = () => {
         }
 
         .lightbox-footer {
-          background-color: rgba(20, 42, 29, 0.95);
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          background-color: rgba(14, 18, 16, 0.95);
+          border-top: 1px solid var(--border-gold);
           padding: 1.5rem;
-          color: var(--snow-white);
+          color: var(--text-main);
         }
 
         .lightbox-footer h3 {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
           font-size: 1.25rem;
           margin-bottom: 0.25rem;
         }
 
         .lightbox-footer p {
           font-size: 0.8rem;
-          color: var(--beige-dark);
+          color: var(--text-muted);
         }
       `}</style>
     </section>

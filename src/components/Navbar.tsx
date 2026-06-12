@@ -102,11 +102,11 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="mobile-nav-panel"
+            className="mobile-nav-panel animate-panel"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
           >
             <div className="mobile-links">
               {navLinks.map((link) => (
@@ -131,7 +131,6 @@ export const Navbar: React.FC = () => {
         )}
       </AnimatePresence>
       
-      {/* CSS Styles specific to Navbar layout (embedded/defined in index.css as well, or loaded natively) */}
       <style>{`
         .navbar-header {
           position: fixed;
@@ -143,31 +142,31 @@ export const Navbar: React.FC = () => {
           align-items: center;
           z-index: 1000;
           transition: var(--transition-smooth);
-          background: rgba(250, 248, 245, 0.4);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border-bottom: 1px solid rgba(20, 42, 29, 0.05);
+          background: rgba(8, 11, 9, 0.7);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--border-gold);
         }
         .navbar-header.scrolled {
-          background: rgba(20, 42, 29, 0.95);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(8, 11, 9, 0.95);
+          border-bottom: 1px solid var(--border-gold-bright);
           height: 70px;
         }
         .navbar-header.scrolled .logo-main {
-          color: var(--snow-white);
+          color: var(--text-main);
         }
         .navbar-header.scrolled .logo-sub {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
         }
         .navbar-header.scrolled .nav-link {
-          color: var(--beige-dark);
+          color: var(--text-muted);
         }
         .navbar-header.scrolled .nav-link.active,
         .navbar-header.scrolled .nav-link:hover {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
         }
         .navbar-header.scrolled .mobile-menu-toggle {
-          color: var(--snow-white);
+          color: var(--text-main);
         }
         
         .navbar-container {
@@ -188,17 +187,17 @@ export const Navbar: React.FC = () => {
           font-size: 1.6rem;
           font-weight: 700;
           letter-spacing: 0.02em;
-          color: var(--forest-green);
+          color: var(--text-main);
           transition: var(--transition-smooth);
         }
         
         .logo-sub {
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 0.75rem;
           font-weight: 500;
-          letter-spacing: 0.25em;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: var(--luxury-gold-dark);
+          color: var(--accent-gold);
           transition: var(--transition-smooth);
         }
         
@@ -214,12 +213,12 @@ export const Navbar: React.FC = () => {
         }
         
         .nav-link {
-          font-family: var(--font-sans);
-          font-size: 0.9rem;
+          font-family: var(--font-serif);
+          font-size: 0.85rem;
           font-weight: 500;
           text-transform: uppercase;
-          letter-spacing: 0.05em;
-          color: var(--forest-green);
+          letter-spacing: 0.1em;
+          color: var(--text-muted);
           position: relative;
           padding: 0.5rem 0;
         }
@@ -231,8 +230,13 @@ export const Navbar: React.FC = () => {
           left: 0;
           width: 0;
           height: 1px;
-          background: currentColor;
+          background: var(--accent-gold);
           transition: var(--transition-smooth);
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+          color: var(--accent-gold);
         }
         
         .nav-link:hover::after,
@@ -249,7 +253,7 @@ export const Navbar: React.FC = () => {
         .btn-book-now {
           padding: 0.6rem 1.4rem;
           font-size: 0.8rem;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.1em;
           display: inline-flex;
           align-items: center;
         }
@@ -258,7 +262,7 @@ export const Navbar: React.FC = () => {
           display: none;
           background: none;
           border: none;
-          color: var(--forest-green);
+          color: var(--text-main);
           cursor: pointer;
           transition: var(--transition-fast);
         }
@@ -277,11 +281,11 @@ export const Navbar: React.FC = () => {
           top: var(--header-height);
           left: 0;
           width: 100%;
-          background: var(--forest-green);
+          background: var(--bg-dark);
           z-index: 999;
           padding: 2rem;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-          border-bottom: 2px solid var(--luxury-gold);
+          box-shadow: var(--shadow-premium);
+          border-bottom: 2px solid var(--accent-gold);
         }
         
         .mobile-links {
@@ -291,19 +295,19 @@ export const Navbar: React.FC = () => {
         }
         
         .mobile-link {
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 1.1rem;
           font-weight: 500;
           text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: var(--beige-dark);
+          letter-spacing: 0.12em;
+          color: var(--text-muted);
           padding-bottom: 0.25rem;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
+          border-bottom: 1px solid var(--border-gold);
         }
         
         .mobile-link.active {
-          color: var(--luxury-gold);
-          border-bottom-color: var(--luxury-gold);
+          color: var(--accent-gold);
+          border-bottom-color: var(--accent-gold);
         }
       `}</style>
     </>

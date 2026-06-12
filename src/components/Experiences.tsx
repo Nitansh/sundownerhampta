@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { EXPERIENCES } from '../data';
 import type { Experience } from '../data';
@@ -38,7 +38,7 @@ export const Experiences: React.FC = () => {
                 <motion.div 
                   layoutId="activeTabUnderline" 
                   className="tab-underline"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 28 }}
                 />
               )}
             </button>
@@ -54,7 +54,7 @@ export const Experiences: React.FC = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.3 }}
             >
               <div className="panel-grid">
                 {/* Visual Block */}
@@ -93,15 +93,16 @@ export const Experiences: React.FC = () => {
 
       <style>{`
         .experiences-section {
-          background-color: var(--beige-dark);
+          background-color: var(--bg-dark);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .experiences-tabs {
           display: flex;
           justify-content: center;
           gap: 1.5rem;
-          margin-bottom: 3rem;
-          border-bottom: 1px solid var(--beige-border);
+          margin-bottom: 3.5rem;
+          border-bottom: 1px solid var(--border-gold);
           padding-bottom: 0.5rem;
           flex-wrap: wrap;
         }
@@ -111,9 +112,9 @@ export const Experiences: React.FC = () => {
           background: none;
           border: none;
           padding: 1rem 1.5rem;
-          font-family: var(--font-sans);
-          font-size: 1.05rem;
-          font-weight: 500;
+          font-family: var(--font-serif);
+          font-size: 1rem;
+          letter-spacing: 0.05em;
           color: var(--text-muted);
           cursor: pointer;
           display: flex;
@@ -123,12 +124,12 @@ export const Experiences: React.FC = () => {
         }
 
         .tab-btn:hover {
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
         }
 
         .tab-btn.active {
-          color: var(--forest-green);
-          font-weight: 600;
+          color: var(--accent-gold);
+          font-weight: 500;
         }
 
         .tab-underline {
@@ -136,8 +137,8 @@ export const Experiences: React.FC = () => {
           bottom: -0.5rem;
           left: 0;
           right: 0;
-          height: 3px;
-          background-color: var(--luxury-gold);
+          height: 2px;
+          background-color: var(--accent-gold);
         }
 
         .experience-panel-wrapper {
@@ -145,9 +146,10 @@ export const Experiences: React.FC = () => {
         }
 
         .experience-panel {
-          border-radius: var(--radius-lg);
+          border-radius: var(--radius-sm);
           padding: 3rem;
-          border: 1px solid var(--beige-border);
+          border: 1px solid var(--border-gold);
+          background: var(--bg-card);
         }
 
         @media (max-width: 768px) {
@@ -173,9 +175,10 @@ export const Experiences: React.FC = () => {
         .panel-image-container {
           position: relative;
           height: 420px;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow: hidden;
           box-shadow: var(--shadow-medium);
+          border: 1px solid var(--border-gold);
         }
 
         @media (max-width: 480px) {
@@ -192,22 +195,22 @@ export const Experiences: React.FC = () => {
         }
 
         .experience-panel:hover .panel-image {
-          transform: scale(1.03);
+          transform: scale(1.02);
         }
 
         .panel-badge {
           position: absolute;
           top: 1.5rem;
           left: 1.5rem;
-          background: var(--luxury-gold);
-          color: var(--forest-green);
-          padding: 0.5rem 1rem;
+          background: var(--accent-gold);
+          color: var(--bg-deep);
+          padding: 0.4rem 0.8rem;
           border-radius: var(--radius-sm);
-          font-family: var(--font-sans);
-          font-size: 0.8rem;
+          font-family: var(--font-serif);
+          font-size: 0.75rem;
           font-weight: 600;
           text-transform: uppercase;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.1em;
         }
 
         .panel-details {
@@ -216,14 +219,14 @@ export const Experiences: React.FC = () => {
         }
 
         .panel-title {
-          font-size: 2.2rem;
+          font-size: 2rem;
           margin-bottom: 1.25rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
         }
 
         .panel-desc {
-          font-size: 1.1rem;
-          line-height: 1.6;
+          font-size: 1.05rem;
+          line-height: 1.7;
           margin-bottom: 2rem;
           color: var(--text-muted);
         }
@@ -238,30 +241,29 @@ export const Experiences: React.FC = () => {
           display: flex;
           gap: 1rem;
           align-items: flex-start;
-          padding: 1rem;
-          background: rgba(255, 255, 255, 0.4);
-          border-radius: var(--radius-md);
-          border: 1px solid rgba(255, 255, 255, 0.5);
+          padding: 1.25rem;
+          background: rgba(255, 255, 255, 0.01);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-gold);
           transition: var(--transition-smooth);
         }
 
         .checklist-card:hover {
-          background: rgba(255, 255, 255, 0.95);
-          border-color: var(--luxury-gold);
-          transform: translateX(5px);
+          background: rgba(255, 255, 255, 0.03);
+          border-color: var(--accent-gold);
+          transform: translateX(4px);
         }
 
         .check-icon {
-          color: var(--luxury-gold-dark);
+          color: var(--accent-gold);
           flex-shrink: 0;
           margin-top: 0.15rem;
         }
 
         .check-title {
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-family: var(--font-serif);
           font-size: 1.05rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
         }
 
         .check-desc {

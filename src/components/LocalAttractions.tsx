@@ -17,15 +17,15 @@ export const LocalAttractions: React.FC = () => {
             <motion.div
               key={index}
               className="luxury-card attraction-card"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
             >
               <div className="attraction-img-container">
                 <img src={item.image} alt={item.name} className="attraction-image" />
                 <div className="attraction-distance-badge">
-                  <MapPin size={14} />
+                  <MapPin size={12} />
                   <span>{item.distance}</span>
                 </div>
               </div>
@@ -68,7 +68,8 @@ export const LocalAttractions: React.FC = () => {
 
       <style>{`
         .attractions-section {
-          background-color: var(--warm-beige);
+          background-color: var(--bg-deep);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .attractions-grid {
@@ -79,6 +80,7 @@ export const LocalAttractions: React.FC = () => {
         }
 
         .attraction-card {
+          background-color: var(--bg-card);
           height: 100%;
         }
 
@@ -86,6 +88,7 @@ export const LocalAttractions: React.FC = () => {
           position: relative;
           height: 220px;
           overflow: hidden;
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .attraction-image {
@@ -96,19 +99,20 @@ export const LocalAttractions: React.FC = () => {
         }
 
         .attraction-card:hover .attraction-image {
-          transform: scale(1.06);
+          transform: scale(1.03);
         }
 
         .attraction-distance-badge {
           position: absolute;
           top: 1.25rem;
           left: 1.25rem;
-          background: rgba(20, 42, 29, 0.9);
-          color: var(--luxury-gold);
-          border: 1px solid var(--luxury-gold);
+          background: rgba(8, 11, 9, 0.95);
+          color: var(--accent-gold);
+          border: 1px solid var(--border-gold);
           padding: 0.4rem 0.8rem;
           border-radius: var(--radius-sm);
-          font-size: 0.8rem;
+          font-size: 0.75rem;
+          font-family: var(--font-serif);
           font-weight: 500;
           display: flex;
           align-items: center;
@@ -126,13 +130,13 @@ export const LocalAttractions: React.FC = () => {
         .attraction-name {
           font-size: 1.35rem;
           margin-bottom: 0.75rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
         }
 
         .attraction-desc {
           font-size: 0.95rem;
           color: var(--text-muted);
-          line-height: 1.5;
+          line-height: 1.6;
           margin-bottom: 1.5rem;
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -144,8 +148,8 @@ export const LocalAttractions: React.FC = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 1rem;
-          border-top: 1px solid var(--beige-dark);
-          border-bottom: 1px solid var(--beige-dark);
+          border-top: 1px solid var(--border-gold);
+          border-bottom: 1px solid var(--border-gold);
           padding: 1rem 0;
           margin-bottom: 1.5rem;
         }
@@ -157,7 +161,7 @@ export const LocalAttractions: React.FC = () => {
         }
 
         .spec-icon {
-          color: var(--luxury-gold-dark);
+          color: var(--accent-gold-dark);
           margin-top: 0.15rem;
         }
 
@@ -167,15 +171,15 @@ export const LocalAttractions: React.FC = () => {
           text-transform: uppercase;
           letter-spacing: 0.05em;
           color: var(--text-muted);
-          font-weight: 500;
+          font-family: var(--font-serif);
         }
 
         .spec-value {
           display: block;
           font-size: 0.85rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
           font-weight: 600;
-          line-height: 1.2;
+          line-height: 1.3;
         }
 
         .attraction-activities {
@@ -189,8 +193,9 @@ export const LocalAttractions: React.FC = () => {
           font-size: 0.8rem;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          color: var(--forest-green);
-          font-weight: 600;
+          color: var(--accent-gold);
+          font-family: var(--font-serif);
+          font-weight: 500;
           margin-bottom: 0.5rem;
         }
 
@@ -202,8 +207,9 @@ export const LocalAttractions: React.FC = () => {
 
         .activity-badge {
           font-size: 0.75rem;
-          background-color: var(--beige-dark);
-          color: var(--text-main);
+          background-color: rgba(197, 168, 128, 0.06);
+          color: var(--text-muted);
+          border: 1px solid var(--border-gold);
           padding: 0.25rem 0.6rem;
           border-radius: var(--radius-sm);
         }

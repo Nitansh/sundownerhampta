@@ -37,10 +37,10 @@ export const Hero: React.FC = () => {
             key={currentImageIndex}
             className="hero-slide-image"
             style={{ backgroundImage: `url(${HERO_IMAGES[currentImageIndex]})` }}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1.02 }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1.01 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
           />
         </AnimatePresence>
         <div className="hero-overlay" />
@@ -48,18 +48,18 @@ export const Hero: React.FC = () => {
 
       <div className="hero-content container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="hero-badge"
         >
           <span>Luxury Boutique Mountain Homestay</span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="hero-title"
         >
           Escape to <br />
@@ -67,18 +67,18 @@ export const Hero: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="hero-subtitle"
         >
           Experience breathtaking mountain views, thrilling adventures, local farm life, and authentic Himalayan hospitality.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           className="hero-actions"
         >
           <button 
@@ -101,7 +101,7 @@ export const Hero: React.FC = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
         className="scroll-indicator"
         onClick={() => handleScrollTo('about')}
       >
@@ -117,8 +117,9 @@ export const Hero: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: var(--snow-white);
+          color: var(--text-main);
           overflow: hidden;
+          background-color: var(--bg-deep);
         }
 
         .hero-slider {
@@ -149,9 +150,9 @@ export const Hero: React.FC = () => {
           height: 100%;
           background: linear-gradient(
             to bottom,
-            rgba(20, 42, 29, 0.4) 0%,
-            rgba(20, 42, 29, 0.6) 50%,
-            rgba(20, 42, 29, 0.8) 100%
+            rgba(8, 11, 9, 0.45) 0%,
+            rgba(8, 11, 9, 0.65) 50%,
+            rgba(8, 11, 9, 0.95) 100%
           );
         }
 
@@ -169,43 +170,42 @@ export const Hero: React.FC = () => {
         .hero-badge {
           display: inline-block;
           padding: 0.5rem 1.25rem;
-          background: rgba(197, 168, 128, 0.15);
-          border: 1px solid var(--luxury-gold);
-          border-radius: var(--radius-full);
+          background: rgba(197, 168, 128, 0.08);
+          border: 1px solid var(--border-gold);
+          border-radius: var(--radius-sm);
           margin-bottom: 2rem;
           backdrop-filter: blur(4px);
         }
 
         .hero-badge span {
-          font-family: var(--font-sans);
-          font-size: 0.85rem;
-          font-weight: 500;
+          font-family: var(--font-serif);
+          font-size: 0.8rem;
+          font-weight: 400;
           text-transform: uppercase;
-          letter-spacing: 0.15em;
-          color: var(--luxury-gold);
+          letter-spacing: 0.2em;
+          color: var(--accent-gold);
         }
 
         .hero-title {
           font-family: var(--font-serif);
-          font-weight: 700;
-          color: var(--snow-white);
+          font-weight: 500;
+          color: var(--text-main);
           margin-bottom: 1.5rem;
-          text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+          text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
         .gold-text {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
         }
 
         .hero-subtitle {
-          font-family: var(--font-sans);
-          font-size: clamp(1.1rem, 2vw, 1.4rem);
-          font-weight: 300;
-          color: var(--beige-dark);
+          font-family: var(--font-body);
+          font-size: clamp(1.1rem, 2vw, 1.35rem);
+          color: var(--text-muted);
           max-width: 700px;
           margin-bottom: 3rem;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-          line-height: 1.5;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+          line-height: 1.7;
         }
 
         .hero-actions {
@@ -224,13 +224,14 @@ export const Hero: React.FC = () => {
         }
 
         .hero-btn-secondary {
-          border-color: var(--snow-white);
-          color: var(--snow-white);
+          border-color: var(--border-gold-bright);
+          color: var(--text-main);
         }
 
         .hero-btn-secondary:hover {
-          background-color: var(--snow-white);
-          color: var(--forest-green);
+          background-color: rgba(255, 255, 255, 0.03);
+          border-color: var(--accent-gold);
+          color: var(--accent-gold);
         }
 
         .scroll-indicator {
@@ -250,19 +251,19 @@ export const Hero: React.FC = () => {
 
         .scroll-indicator:hover {
           opacity: 1;
-          transform: translate(-50%, -5px);
+          transform: translate(-50%, -3px);
         }
 
         .scroll-indicator span {
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 0.75rem;
           text-transform: uppercase;
-          letter-spacing: 0.25em;
-          color: var(--beige-dark);
+          letter-spacing: 0.2em;
+          color: var(--text-muted);
         }
 
         .arrow-down {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
           animation: bounce 2s infinite;
         }
 

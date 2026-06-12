@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { REVIEWS } from '../data';
 import { Star, Quote, ArrowLeft, ArrowRight, Play, X } from 'lucide-react';
@@ -17,7 +17,7 @@ export const Reviews: React.FC = () => {
 
   const renderStars = (rating: number) => {
     return Array.from({ length: rating }).map((_, idx) => (
-      <Star key={idx} size={16} fill="var(--luxury-gold)" color="var(--luxury-gold)" />
+      <Star key={idx} size={16} fill="var(--accent-gold)" color="var(--accent-gold)" />
     ));
   };
 
@@ -64,9 +64,9 @@ export const Reviews: React.FC = () => {
                 <motion.div
                   key={currentIndex}
                   className="carousel-slide"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <Quote className="quote-icon" size={48} />
@@ -114,7 +114,7 @@ export const Reviews: React.FC = () => {
                 <div className="video-thumbnail-wrapper">
                   <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=400&q=80" alt="Video thumbnail 1" />
                   <div className="play-button-overlay">
-                    <Play size={20} fill="var(--snow-white)" />
+                    <Play size={18} fill="var(--bg-deep)" color="var(--bg-deep)" />
                   </div>
                 </div>
                 <div className="video-card-body">
@@ -127,7 +127,7 @@ export const Reviews: React.FC = () => {
                 <div className="video-thumbnail-wrapper">
                   <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=400&q=80" alt="Video thumbnail 2" />
                   <div className="play-button-overlay">
-                    <Play size={20} fill="var(--snow-white)" />
+                    <Play size={18} fill="var(--bg-deep)" color="var(--bg-deep)" />
                   </div>
                 </div>
                 <div className="video-card-body">
@@ -146,7 +146,7 @@ export const Reviews: React.FC = () => {
           <div className="video-modal-backdrop" onClick={closeVideo}>
             <div className="video-modal-wrapper" onClick={(e) => e.stopPropagation()}>
               <button className="video-modal-close" onClick={closeVideo} aria-label="Close video player">
-                <X size={24} />
+                <X size={20} />
               </button>
               <div className="video-responsive-iframe">
                 <iframe
@@ -164,7 +164,8 @@ export const Reviews: React.FC = () => {
 
       <style>{`
         .reviews-section {
-          background-color: var(--warm-beige);
+          background-color: var(--bg-deep);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .reviews-layout-grid {
@@ -184,8 +185,9 @@ export const Reviews: React.FC = () => {
 
         .carousel-block {
           padding: 3rem;
-          border-radius: var(--radius-lg);
-          border: 1px solid var(--beige-border);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-gold);
+          background-color: var(--bg-card);
           position: relative;
         }
 
@@ -199,7 +201,7 @@ export const Reviews: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid var(--beige-border);
+          border-bottom: 1px solid var(--border-gold);
           padding-bottom: 1.5rem;
           margin-bottom: 2rem;
           flex-wrap: wrap;
@@ -218,10 +220,10 @@ export const Reviews: React.FC = () => {
         }
 
         .badge-text {
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-family: var(--font-serif);
+          font-weight: 500;
           font-size: 1.1rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
         }
 
         .stars-meta {
@@ -232,10 +234,10 @@ export const Reviews: React.FC = () => {
         }
 
         .rating-num {
-          font-family: var(--font-sans);
-          font-weight: 700;
+          font-family: var(--font-serif);
+          font-weight: 600;
           font-size: 1.2rem;
-          color: var(--forest-green);
+          color: var(--accent-gold);
         }
 
         .google-stars {
@@ -255,7 +257,7 @@ export const Reviews: React.FC = () => {
         }
 
         .quote-icon {
-          color: rgba(197, 168, 128, 0.2);
+          color: rgba(197, 168, 128, 0.1);
           margin-bottom: 1rem;
         }
 
@@ -267,7 +269,7 @@ export const Reviews: React.FC = () => {
 
         .review-comment {
           font-size: 1.05rem;
-          line-height: 1.6;
+          line-height: 1.7;
           color: var(--text-main);
           font-style: italic;
           margin-bottom: 2rem;
@@ -283,16 +285,16 @@ export const Reviews: React.FC = () => {
         .reviewer-avatar {
           width: 52px;
           height: 52px;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           object-fit: cover;
-          border: 2px solid var(--luxury-gold);
+          border: 1px solid var(--border-gold-bright);
         }
 
         .reviewer-name {
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-family: var(--font-serif);
+          font-weight: 500;
           font-size: 1.05rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
         }
 
         .review-details {
@@ -319,10 +321,10 @@ export const Reviews: React.FC = () => {
         .carousel-control-btn {
           width: 44px;
           height: 44px;
-          border-radius: var(--radius-full);
-          border: 1px solid var(--forest-light);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-gold);
           background-color: transparent;
-          color: var(--forest-green);
+          color: var(--accent-gold);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -331,20 +333,23 @@ export const Reviews: React.FC = () => {
         }
 
         .carousel-control-btn:hover {
-          background-color: var(--forest-green);
-          color: var(--snow-white);
-          border-color: var(--forest-green);
+          background-color: var(--accent-gold);
+          color: var(--bg-deep);
+          border-color: var(--accent-gold);
         }
 
         /* Video Testimonials side */
         .video-testimonials-block h3 {
+          font-family: var(--font-serif);
           font-size: 1.6rem;
           margin-bottom: 0.5rem;
+          color: var(--accent-gold-bright);
         }
 
         .block-intro {
           font-size: 1rem;
           margin-bottom: 2rem;
+          color: var(--text-muted);
         }
 
         .videos-list-layout {
@@ -356,19 +361,20 @@ export const Reviews: React.FC = () => {
         .video-card {
           display: flex;
           gap: 1.25rem;
-          background-color: var(--snow-white);
-          border-radius: var(--radius-md);
+          background-color: var(--bg-card);
+          border-radius: var(--radius-sm);
           overflow: hidden;
           box-shadow: var(--shadow-soft);
-          border: 1px solid var(--beige-dark);
+          border: 1px solid var(--border-gold);
           cursor: pointer;
           transition: var(--transition-smooth);
         }
 
         .video-card:hover {
-          transform: translateY(-4px);
+          transform: translateY(-2px);
           box-shadow: var(--shadow-medium);
-          border-color: var(--luxury-gold);
+          border-color: var(--accent-gold);
+          background-color: var(--bg-card-hover);
         }
 
         .video-thumbnail-wrapper {
@@ -377,6 +383,7 @@ export const Reviews: React.FC = () => {
           height: 100px;
           flex-shrink: 0;
           background-color: var(--charcoal);
+          border-right: 1px solid var(--border-gold);
         }
 
         .video-thumbnail-wrapper img {
@@ -393,7 +400,7 @@ export const Reviews: React.FC = () => {
           width: 36px;
           height: 36px;
           border-radius: var(--radius-full);
-          background-color: rgba(224, 122, 95, 0.9);
+          background-color: var(--accent-gold);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -401,8 +408,8 @@ export const Reviews: React.FC = () => {
         }
 
         .video-card:hover .play-button-overlay {
-          transform: translate(-50%, -50%) scale(1.15);
-          background-color: var(--sunset-dark);
+          transform: translate(-50%, -50%) scale(1.08);
+          background-color: var(--accent-gold-bright);
         }
 
         .video-card-body {
@@ -413,15 +420,16 @@ export const Reviews: React.FC = () => {
         }
 
         .video-card-body h4 {
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-family: var(--font-serif);
+          font-weight: 500;
           font-size: 1.05rem;
           margin-bottom: 0.25rem;
+          color: var(--accent-gold-bright);
         }
 
         .video-card-body p {
           font-size: 0.85rem;
-          line-height: 1.4;
+          line-height: 1.45;
           color: var(--text-muted);
         }
 
@@ -432,7 +440,7 @@ export const Reviews: React.FC = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(10, 20, 14, 0.9);
+          background: rgba(8, 11, 9, 0.9);
           z-index: 1300;
           display: flex;
           align-items: center;
@@ -448,18 +456,19 @@ export const Reviews: React.FC = () => {
           border-radius: var(--radius-sm);
           overflow: hidden;
           box-shadow: var(--shadow-premium);
+          border: 1px solid var(--border-gold-bright);
         }
 
         .video-modal-close {
           position: absolute;
           top: 1rem;
           right: 1rem;
-          background: rgba(255, 255, 255, 0.2);
-          border: none;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           color: var(--snow-white);
           width: 36px;
           height: 36px;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -470,6 +479,7 @@ export const Reviews: React.FC = () => {
 
         .video-modal-close:hover {
           background: var(--sunset-orange);
+          border-color: var(--sunset-orange);
         }
 
         .video-responsive-iframe {

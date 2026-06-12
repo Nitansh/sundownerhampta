@@ -432,11 +432,11 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
         {bookingSuccessData && (
           <div className="success-overlay">
             <motion.div 
-              className="success-modal glass-panel"
-              initial={{ scale: 0.8, opacity: 0 }}
+              className="success-modal glass-panel-dark"
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
               <div className="success-header">
                 <div className="success-check-badge">
@@ -488,7 +488,8 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
 
       <style>{`
         .booking-section {
-          background-color: var(--warm-beige);
+          background-color: var(--bg-deep);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .booking-layout-grid {
@@ -507,23 +508,24 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
         }
 
         .booking-form-card {
-          border-radius: var(--radius-lg);
-          border: 1px solid var(--beige-border);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-gold);
           overflow: hidden;
+          background: var(--bg-card);
         }
 
         .booking-mode-selector {
           display: flex;
-          background-color: var(--beige-dark);
-          border-bottom: 1px solid var(--beige-border);
+          background-color: var(--bg-dark);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .mode-tab {
           flex: 1;
           padding: 1.25rem;
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 1rem;
-          font-weight: 500;
+          letter-spacing: 0.05em;
           background: none;
           border: none;
           color: var(--text-muted);
@@ -532,9 +534,9 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
         }
 
         .mode-tab.active {
-          background-color: var(--warm-beige);
-          color: var(--forest-green);
-          font-weight: 600;
+          background-color: var(--bg-card);
+          color: var(--accent-gold);
+          font-weight: 500;
         }
 
         .booking-form {
@@ -594,13 +596,13 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background-color: rgba(48, 77, 48, 0.1);
-          color: var(--forest-green);
+          background-color: rgba(197, 168, 128, 0.08);
+          color: var(--accent-gold-bright);
           padding: 0.5rem 1rem;
           border-radius: var(--radius-sm);
           font-size: 0.85rem;
           margin-bottom: 1.5rem;
-          border: 1px solid rgba(48, 77, 48, 0.2);
+          border: 1px solid var(--border-gold);
         }
 
         .remove-coupon {
@@ -621,21 +623,23 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
         }
 
         .selected-package-display {
-          background-color: var(--beige-dark);
+          background-color: var(--bg-dark);
           padding: 1.25rem;
           border-radius: var(--radius-sm);
-          border: 1px solid var(--beige-border);
+          border: 1px solid var(--border-gold);
         }
 
         .package-details-banner h4 {
+          font-family: var(--font-serif);
           font-size: 1.15rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
           margin-bottom: 0.25rem;
         }
 
         .package-details-banner p {
           font-size: 0.9rem;
           margin-bottom: 0.75rem;
+          color: var(--text-muted);
         }
 
         .change-selection-btn {
@@ -664,9 +668,10 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
 
         /* Summary Side */
         .booking-summary-card {
-          border-radius: var(--radius-lg);
+          border-radius: var(--radius-sm);
           padding: 3rem;
-          color: var(--snow-white);
+          color: var(--text-main);
+          border: 1px solid var(--border-gold);
         }
 
         @media (max-width: 576px) {
@@ -677,8 +682,8 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
 
         .summary-title {
           font-size: 1.6rem;
-          color: var(--luxury-gold);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+          color: var(--accent-gold);
+          border-bottom: 1px solid var(--border-gold);
           padding-bottom: 1rem;
           margin-bottom: 2rem;
         }
@@ -687,7 +692,7 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+          border-bottom: 1px solid var(--border-gold);
           padding-bottom: 2rem;
           margin-bottom: 2rem;
         }
@@ -700,13 +705,14 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
 
         .summary-row .label {
           font-size: 0.9rem;
-          color: var(--beige-dark);
+          color: var(--text-muted);
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          font-family: var(--font-serif);
         }
 
         .summary-row .value {
-          font-weight: 600;
+          font-weight: 500;
           font-size: 0.95rem;
           text-align: right;
         }
@@ -715,7 +721,7 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           display: flex;
           flex-direction: column;
           gap: 1rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+          border-bottom: 1px solid var(--border-gold);
           padding-bottom: 2rem;
           margin-bottom: 2rem;
         }
@@ -724,6 +730,7 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           display: flex;
           justify-content: space-between;
           font-size: 1.05rem;
+          color: var(--text-muted);
         }
 
         .breakdown-row.discount {
@@ -734,8 +741,8 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
         .breakdown-row.grand-total {
           font-size: 1.5rem;
           font-family: var(--font-serif);
-          font-weight: 700;
-          color: var(--luxury-gold);
+          font-weight: 500;
+          color: var(--accent-gold);
         }
 
         .booking-trust-points {
@@ -749,11 +756,11 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           gap: 0.75rem;
           align-items: flex-start;
           font-size: 0.85rem;
-          color: var(--beige-dark);
+          color: var(--text-muted);
         }
 
         .trust-item strong {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
         }
 
         /* Success Overlay */
@@ -763,8 +770,8 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(10, 20, 14, 0.85);
-          backdrop-filter: blur(8px);
+          background: rgba(8, 11, 9, 0.9);
+          backdrop-filter: blur(12px);
           z-index: 1500;
           display: flex;
           align-items: center;
@@ -775,11 +782,11 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
         .success-modal {
           width: 100%;
           max-width: 650px;
-          border-radius: var(--radius-lg);
+          border-radius: var(--radius-sm);
           padding: 3rem;
-          background: var(--warm-beige);
+          background: var(--bg-dark);
           text-align: center;
-          border: 1px solid var(--luxury-gold);
+          border: 1px solid var(--border-gold-bright);
           box-shadow: var(--shadow-premium);
         }
 
@@ -793,16 +800,16 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           width: 80px;
           height: 80px;
           border-radius: var(--radius-full);
-          background-color: var(--forest-green);
+          background-color: var(--accent-gold);
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 1.5rem;
-          box-shadow: 0 8px 24px rgba(20, 42, 29, 0.25);
+          box-shadow: 0 8px 24px rgba(197, 168, 128, 0.25);
         }
 
         .sparkle-icon {
-          color: var(--luxury-gold);
+          color: var(--bg-deep);
         }
 
         .success-tag {
@@ -815,12 +822,12 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 1.25rem;
-          background: var(--beige-dark);
+          background: var(--bg-card);
           padding: 1.5rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           margin: 2rem 0;
           text-align: left;
-          border: 1px solid var(--beige-border);
+          border: 1px solid var(--border-gold);
         }
 
         @media (max-width: 480px) {
@@ -850,39 +857,41 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
           letter-spacing: 0.05em;
           color: var(--text-muted);
           margin-bottom: 0.15rem;
+          font-family: var(--font-serif);
         }
 
         .success-detail-row .value {
-          font-weight: 600;
+          font-weight: 500;
           font-size: 0.95rem;
-          color: var(--forest-green);
+          color: var(--text-main);
         }
 
         .success-detail-row .value.code {
           font-family: monospace;
-          color: var(--sunset-orange);
+          color: var(--accent-gold-bright);
           letter-spacing: 0.05em;
           font-size: 1.05rem;
         }
 
         .success-detail-row .value.price {
-          color: var(--luxury-gold-dark);
+          color: var(--accent-gold);
           font-size: 1.15rem;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .success-detail-row .value.note {
           font-weight: 400;
           font-style: italic;
           font-size: 0.9rem;
+          color: var(--text-muted);
         }
 
         .email-sim-alert {
           display: flex;
           gap: 0.75rem;
           align-items: center;
-          background: rgba(20, 42, 29, 0.05);
-          border: 1px solid rgba(20, 42, 29, 0.1);
+          background: rgba(197, 168, 128, 0.05);
+          border: 1px solid var(--border-gold);
           padding: 1rem;
           border-radius: var(--radius-sm);
           text-align: left;
@@ -891,7 +900,7 @@ export const BookingEngine: React.FC<BookingEngineProps> = ({
 
         .email-sim-alert p {
           font-size: 0.85rem;
-          color: var(--forest-green);
+          color: var(--accent-gold-bright);
           font-weight: 500;
         }
 

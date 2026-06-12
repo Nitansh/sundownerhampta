@@ -19,8 +19,6 @@ export const Contact: React.FC = () => {
     }, 4000);
   };
 
-  // Hampta coordinates: ~32.2285° N, 77.2662° E.
-  // Using OpenStreetMap Embed which is dynamic, fast, and does not require commercial billing keys.
   const mapIframeUrl = "https://www.openstreetmap.org/export/embed.html?bbox=77.24%2C32.21%2C77.29%2C32.24&layer=mapnik&marker=32.2285%2C77.2662";
 
   return (
@@ -134,7 +132,7 @@ export const Contact: React.FC = () => {
               </div>
 
               <button type="submit" className="btn btn-primary w-full send-message-btn">
-                <Send size={18} />
+                <Send size={16} />
                 Send Inquiry Message
               </button>
 
@@ -161,7 +159,8 @@ export const Contact: React.FC = () => {
 
       <style>{`
         .contact-section {
-          background-color: var(--beige-dark);
+          background-color: var(--bg-dark);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .contact-grid {
@@ -195,18 +194,19 @@ export const Contact: React.FC = () => {
           display: flex;
           gap: 1.25rem;
           padding: 2rem;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--beige-border);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-gold);
           align-items: flex-start;
-          background: rgba(255, 255, 255, 0.4);
+          background: var(--bg-card);
         }
 
         .info-icon {
           width: 44px;
           height: 44px;
           border-radius: var(--radius-sm);
-          background-color: var(--forest-green);
-          color: var(--luxury-gold);
+          background-color: var(--bg-deep);
+          color: var(--accent-gold);
+          border: 1px solid var(--border-gold);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -215,16 +215,17 @@ export const Contact: React.FC = () => {
         }
 
         .info-body h4 {
-          font-family: var(--font-sans);
-          font-weight: 600;
+          font-family: var(--font-serif);
+          font-weight: 500;
           font-size: 1.1rem;
           margin-bottom: 0.35rem;
+          color: var(--accent-gold-bright);
         }
 
         .info-body p {
           font-size: 0.95rem;
           color: var(--text-muted);
-          line-height: 1.45;
+          line-height: 1.5;
           margin-bottom: 0.5rem;
         }
 
@@ -233,6 +234,7 @@ export const Contact: React.FC = () => {
           font-weight: 600;
           color: var(--sunset-orange);
           text-decoration: underline;
+          font-family: var(--font-serif);
         }
 
         .directions-link:hover {
@@ -248,16 +250,15 @@ export const Contact: React.FC = () => {
         .contact-action-btn {
           padding: 0.5rem 1rem;
           font-size: 0.8rem;
-          border-radius: var(--radius-sm);
         }
 
         /* Map Styles */
         .map-container-wrapper {
-          border-radius: var(--radius-md);
-          border: 1px solid var(--beige-border);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-gold);
           overflow: hidden;
           padding: 0.5rem;
-          background: rgba(255, 255, 255, 0.4);
+          background: var(--bg-card);
         }
 
         .map-footer-label {
@@ -265,16 +266,16 @@ export const Contact: React.FC = () => {
           font-size: 0.8rem;
           color: var(--text-muted);
           text-align: center;
-          border-top: 1px solid var(--beige-dark);
+          border-top: 1px solid var(--border-gold);
           margin-top: 0.5rem;
         }
 
         /* Form Side */
         .contact-form-col {
-          border-radius: var(--radius-lg);
+          border-radius: var(--radius-sm);
           padding: 3rem;
-          border: 1px solid var(--beige-border);
-          background-color: var(--snow-white);
+          border: 1px solid var(--border-gold);
+          background-color: var(--bg-card);
         }
 
         @media (max-width: 576px) {
@@ -284,8 +285,10 @@ export const Contact: React.FC = () => {
         }
 
         .contact-form-col h3 {
+          font-family: var(--font-serif);
           font-size: 1.8rem;
           margin-bottom: 0.5rem;
+          color: var(--accent-gold-bright);
         }
 
         .form-intro {
@@ -307,34 +310,37 @@ export const Contact: React.FC = () => {
           display: flex;
           align-items: flex-start;
           gap: 1rem;
-          background-color: rgba(48, 77, 48, 0.95);
-          color: var(--snow-white);
+          background-color: rgba(197, 168, 128, 0.08);
+          color: var(--text-main);
           padding: 1.25rem;
           border-radius: var(--radius-sm);
           margin-top: 1.5rem;
           box-shadow: var(--shadow-medium);
-          border-left: 4px solid var(--luxury-gold);
+          border-left: 4px solid var(--accent-gold);
+          border-top: 1px solid var(--border-gold);
+          border-right: 1px solid var(--border-gold);
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .toast-icon {
-          color: var(--luxury-gold);
+          color: var(--accent-gold);
           flex-shrink: 0;
           margin-top: 0.15rem;
         }
 
         .toast-success-notification h5 {
-          color: var(--snow-white);
-          font-family: var(--font-sans);
-          font-weight: 600;
+          color: var(--accent-gold-bright);
+          font-family: var(--font-serif);
+          font-weight: 500;
           font-size: 0.95rem;
           margin-bottom: 0.15rem;
         }
 
         .toast-success-notification p {
           font-size: 0.8rem;
-          color: var(--beige-dark);
+          color: var(--text-muted);
           margin-bottom: 0;
-          line-height: 1.3;
+          line-height: 1.35;
         }
       `}</style>
     </section>

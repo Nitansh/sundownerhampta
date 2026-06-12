@@ -38,10 +38,10 @@ export const About: React.FC = () => {
           {/* Text Content Block */}
           <motion.div 
             className="about-text-content"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.4 }}
           >
             <h3>Where Luxury Meets Mountain Wilderness</h3>
             <p>
@@ -60,7 +60,7 @@ export const About: React.FC = () => {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4> Hampta Valley, India</h4>
+                  <h4>Hampta Valley, India</h4>
                   <p>Located on a private ridge away from tourist crowds.</p>
                 </div>
               </div>
@@ -90,10 +90,10 @@ export const About: React.FC = () => {
           {/* Image & Timeline Grid */}
           <motion.div 
             className="about-timeline-content"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <h3>Our Journey</h3>
             <div className="timeline-trail">
@@ -114,8 +114,8 @@ export const About: React.FC = () => {
         <div className="about-visuals-grid">
           <motion.div 
             className="about-image-card"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
             <img src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=600&q=80" alt="Mountain ridges" />
             <div className="image-caption">Glacial Ridges</div>
@@ -123,8 +123,8 @@ export const About: React.FC = () => {
 
           <motion.div 
             className="about-image-card"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
             <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="Luxury Homestay Exterior" />
             <div className="image-caption">Homestay Exterior</div>
@@ -132,8 +132,8 @@ export const About: React.FC = () => {
 
           <motion.div 
             className="about-image-card"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
             <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80" alt="Sunset and Bonfire" />
             <div className="image-caption">Evening Solitude</div>
@@ -143,20 +143,9 @@ export const About: React.FC = () => {
 
       <style>{`
         .about-section {
-          background-color: var(--beige-dark);
+          background-color: var(--bg-dark);
           color: var(--text-main);
-        }
-
-        .subtitle {
-          font-family: var(--font-sans);
-          font-size: 0.85rem;
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 0.15em;
-          color: var(--luxury-gold-dark);
-          display: block;
-          margin-bottom: 0.5rem;
-          text-align: center;
+          border-bottom: 1px solid var(--border-gold);
         }
 
         .about-grid {
@@ -175,15 +164,18 @@ export const About: React.FC = () => {
 
         .about-text-content h3,
         .about-timeline-content h3 {
+          font-family: var(--font-serif);
           font-size: 1.8rem;
           margin-bottom: 1.5rem;
-          border-bottom: 1px solid rgba(20, 42, 29, 0.1);
+          border-bottom: 1px solid var(--border-gold);
           padding-bottom: 0.75rem;
+          color: var(--accent-gold);
         }
 
         .about-text-content p {
           margin-bottom: 1.5rem;
-          line-height: 1.7;
+          line-height: 1.8;
+          color: var(--text-muted);
         }
 
         .features-icon-grid {
@@ -200,8 +192,8 @@ export const About: React.FC = () => {
         }
 
         .icon-wrapper {
-          background-color: var(--forest-green);
-          color: var(--luxury-gold);
+          background-color: var(--bg-card);
+          color: var(--accent-gold);
           width: 44px;
           height: 44px;
           border-radius: var(--radius-sm);
@@ -209,14 +201,16 @@ export const About: React.FC = () => {
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          border: 1px solid var(--border-gold);
           box-shadow: var(--shadow-soft);
         }
 
         .feature-icon-item h4 {
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 1.05rem;
-          font-weight: 600;
+          font-weight: 500;
           margin-bottom: 0.25rem;
+          color: var(--text-main);
         }
 
         .feature-icon-item p {
@@ -232,7 +226,7 @@ export const About: React.FC = () => {
           gap: 2rem;
           position: relative;
           padding-left: 1.5rem;
-          border-left: 2px solid var(--forest-light);
+          border-left: 1px solid var(--border-gold);
         }
 
         .timeline-node {
@@ -241,29 +235,30 @@ export const About: React.FC = () => {
 
         .node-badge {
           position: absolute;
-          left: calc(-1.5rem - 17px);
+          left: calc(-1.5rem - 18px);
           top: 0;
-          background: var(--luxury-gold);
-          color: var(--forest-green);
+          background: var(--accent-gold);
+          color: var(--bg-deep);
           font-family: var(--font-serif);
           font-weight: 700;
           font-size: 0.75rem;
           padding: 0.25rem 0.5rem;
           border-radius: var(--radius-sm);
-          border: 2px solid var(--forest-green);
+          border: 1px solid var(--border-gold);
         }
 
         .node-details h4 {
-          font-family: var(--font-sans);
+          font-family: var(--font-serif);
           font-size: 1.1rem;
-          font-weight: 600;
+          font-weight: 500;
           margin-bottom: 0.25rem;
+          color: var(--accent-gold-bright);
         }
 
         .node-details p {
           font-size: 0.95rem;
           color: var(--text-muted);
-          line-height: 1.5;
+          line-height: 1.6;
         }
 
         /* About Visuals Grid */
@@ -283,10 +278,11 @@ export const About: React.FC = () => {
         .about-image-card {
           position: relative;
           height: 300px;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-sm);
           overflow: hidden;
           box-shadow: var(--shadow-medium);
           cursor: pointer;
+          border: 1px solid var(--border-gold);
         }
 
         .about-image-card img {
@@ -297,7 +293,7 @@ export const About: React.FC = () => {
         }
 
         .about-image-card:hover img {
-          transform: scale(1.08);
+          transform: scale(1.04);
         }
 
         .image-caption {
@@ -305,12 +301,14 @@ export const About: React.FC = () => {
           bottom: 0;
           left: 0;
           width: 100%;
-          background: linear-gradient(to top, rgba(20, 42, 29, 0.9), transparent);
-          color: var(--snow-white);
+          background: linear-gradient(to top, rgba(8, 11, 9, 0.95), transparent);
+          color: var(--text-main);
           padding: 1.5rem 1rem 1rem;
           font-family: var(--font-serif);
           font-size: 1.1rem;
           text-align: center;
+          letter-spacing: 0.05em;
+          border-top: 1px solid rgba(197, 168, 128, 0.1);
         }
       `}</style>
     </section>
