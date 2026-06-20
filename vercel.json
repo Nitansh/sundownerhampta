@@ -2,6 +2,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/synth-app/(.*)",
+      "destination": "/synth-app/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

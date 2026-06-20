@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* Scope styling variables for SynthLab */
+.daw-container {
+  --bg-deep: #030712;
+  --bg-dark: #090d16;
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  --accent-teal: #2dd4bf;
+  --accent-teal-bright: #99f6e4;
+  --accent-teal-dark: #0f766e;
+  --accent-rose: #fb7185;
+  --accent-rose-bright: #fecdd3;
+  --accent-rose-dark: #be123c;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --font-serif: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-full: 9999px;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  font-family: var(--font-body);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.daw-container * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Splash/Boot Screen Overlay */
+.daw-splash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 7, 18, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.splash-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 40px rgba(45, 212, 191, 0.05);
+}
+
+.splash-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spin-logo-icon {
+  color: var(--accent-teal);
+  animation: spin-slow 15s linear infinite;
+  filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.4));
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.splash-logo h1 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  background: linear-gradient(135deg, var(--accent-teal), #c084fc, var(--accent-rose));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.splash-logo p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.btn-power-on {
+  font-size: 1rem;
+  padding: 1.1rem 2.2rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  color: #030712;
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal-dark));
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-power-on:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(45, 212, 191, 0.5);
+  background: linear-gradient(135deg, var(--accent-teal-bright), var(--accent-teal));
+}
+
+.power-alert-txt {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Header */
+.daw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-radius: var(--radius-sm);
+}
+
+.header-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent-teal-dark);
+  color: var(--accent-teal-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
+}
+
+.header-title-block h2 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: var(--text-main);
+}
+
+.logo-ver {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--accent-rose);
+  letter-spacing: 0.1em;
+}
+
+.header-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent-teal-bright);
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+}
+
+.green-pulse {
+  animation: pulse-dot 1.8s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(45, 212, 191, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
+}
+
+/* Grid Layout Workspace */
+.daw-workspace-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .daw-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.daw-rack-column {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rack-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.75rem;
+}
+
+.rack-title-ico {
+  color: var(--accent-teal);
+}
+
+.rack-section-title h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rack-content-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.rack-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 1.5rem;
+}
+
+.rack-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Waveform selectors */
+.waveform-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.waveform-card {
+  background: rgba(3, 7, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  color: var(--text-muted);
+}
+
+.waveform-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.waveform-card.active {
+  background: rgba(45, 212, 191, 0.05);
+  border-color: var(--accent-teal);
+  color: var(--accent-teal-bright);
+}
+
+.wave-name {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Wave Shape Icons using CSS borders */
+.wave-shape-icon {
+  width: 24px;
+  height: 12px;
+  display: inline-block;
+  position: relative;
+  opacity: 0.6;
+}
+
+.waveform-card.active .wave-shape-icon {
+  opacity: 1;
+}
+
+/* Sine Shape: double wavy */
+.sine-shape {
+  border-bottom: 2px solid currentColor;
+  border-radius: 0 0 100% 100% / 0 0 50% 50%;
+  transform: scaleY(-1);
+  width: 12px;
+  margin-left: 6px;
+}
+
+.sine-shape::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0 0 100% 100% / 0 0 50% 50%;
+  transform: scaleY(-1);
+}
+
+/* Square Shape: blocky stairs */
+.square-shape {
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  width: 14px;
+  height: 8px;
+  margin-top: 2px;
+}
+
+.square-shape::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+
+/* Sawtooth Shape: ramp */
+.sawtooth-shape {
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  width: 16px;
+  height: 10px;
+}
+
+.sawtooth-shape::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  transform: skewX(-45deg);
+  transform-origin: top left;
+}
+
+/* Triangle Shape: pyramid */
+.triangle-shape {
+  border-bottom: 2px solid currentColor;
+  width: 18px;
+  height: 10px;
+}
+
+.triangle-shape::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  transform: skewX(35deg);
+  transform-origin: bottom right;
+}
+
+.triangle-shape::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid currentColor;
+  transform: skewX(-35deg);
+  transform-origin: bottom left;
+}
+
+/* Vertical sliders grid for ADSR */
+.sliders-vertical-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  background: rgba(3, 7, 20, 0.4);
+  padding: 1.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.vert-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slider-vertical {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 8px;
+  height: 110px;
+  background: #131924;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  accent-color: var(--accent-teal);
+  appearance: slider-vertical;
+}
+
+.slider-lbl {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.slider-lbl small {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+/* Horizontal stack for Filter */
+.sliders-horizontal-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Sub-Blocks on column panels */
+.vis-section-block {
+  width: 100%;
+}
+
+.effects-section-block {
+  width: 100%;
+}
+
+/* Sequencer and Piano Blocks */
+.daw-sequencer-block,
+.daw-piano-block {
+  padding: 1.75rem;
+}
