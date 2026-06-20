@@ -13,6 +13,7 @@ import { BookingEngine } from './components/BookingEngine';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { WhatsappWidget } from './components/WhatsappWidget';
+import { BackgroundGlows } from './components/BackgroundGlows';
 import type { Package } from './data';
 
 function App() {
@@ -147,6 +148,7 @@ function App() {
 
   return (
     <>
+      <BackgroundGlows />
       <Navbar />
       <main>
         <h1 className="sr-only">Sundowner Hampta Luxury Mountain Homestay</h1>

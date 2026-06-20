@@ -1,48 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  /* Super Luxury Dark Palette */
-  --bg-deep: #080B09;
-  --bg-dark: #0E1210;
-  --bg-card: #131916;
-  --bg-card-hover: #19221E;
+  /* Premium Modern Alpine Aurora Dark Palette */
+  --bg-deep: #030712;       /* Slate 950 obsidian base */
+  --bg-dark: #090d16;       /* Deep Midnight Slate */
+  --bg-card: rgba(15, 23, 42, 0.65); /* Glassmorphic Slate 900 */
+  --bg-card-hover: rgba(30, 41, 59, 0.8); /* Slate 800 */
   
-  --accent-gold: #C5A880;
-  --accent-gold-bright: #E2CAAA;
-  --accent-gold-dark: #9D805B;
+  /* Modern Accents (Alpine Aurora & Sunset Glow) */
+  --accent-teal: #2dd4bf;          /* Neon/Mint Teal */
+  --accent-teal-bright: #99f6e4;   /* Light Mint */
+  --accent-teal-dark: #0f766e;     /* Deep Teal */
   
-  --sunset-orange: #E07A5F;
-  --sunset-dark: #C2593F;
-  --snow-white: #FFFFFF;
-  --charcoal: #080B09;
+  --accent-rose: #fb7185;          /* Sunset Rose */
+  --accent-rose-bright: #fecdd3;   /* Light Rose */
+  --accent-rose-dark: #be123c;     /* Deep Rose */
+  
+  /* Maintain compatibility with other components using old variables */
+  --accent-gold: var(--accent-teal);
+  --accent-gold-bright: var(--accent-teal-bright);
+  --accent-gold-dark: var(--accent-teal-dark);
+  
+  --sunset-orange: var(--accent-rose);
+  --sunset-dark: var(--accent-rose-dark);
+  --snow-white: #f8fafc;
+  --charcoal: #030712;
   
   /* Typography & Colors */
-  --text-main: #FAF8F5;
-  --text-muted: #A6B0A9;
-  --text-gold: #C5A880;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;    /* Slate 400 */
+  --text-gold: var(--accent-teal);
   
   /* Fonts */
-  --font-serif: 'Cinzel', serif;
-  --font-body: 'Lora', serif;
+  --font-serif: 'Outfit', 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
   
-  /* Transitions & Animation Easing (Snappy Spring) */
+  /* Transitions & Animation Easing */
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   
   /* Borders and Shadows */
-  --border-gold: rgba(197, 168, 128, 0.18);
-  --border-gold-bright: rgba(197, 168, 128, 0.35);
+  --border-gold: rgba(45, 212, 191, 0.12);
+  --border-gold-bright: rgba(45, 212, 191, 0.25);
+  --border-rose: rgba(251, 113, 133, 0.12);
+  --border-rose-bright: rgba(251, 113, 133, 0.25);
   
-  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.3);
-  --shadow-medium: 0 16px 40px rgba(0, 0, 0, 0.5);
-  --shadow-premium: 0 24px 60px rgba(0, 0, 0, 0.7);
-  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-medium: 0 16px 40px rgba(0, 0, 0, 0.7);
+  --shadow-premium: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(45, 212, 191, 0.03);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.5);
 
-  /* Border Radii */
-  --radius-sm: 2px; /* Muted modern sharp look */
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  /* Border Radii (Rounded modern style) */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
 
   /* Layout Spacing */
@@ -66,6 +78,7 @@ body {
   background-color: var(--bg-deep);
   line-height: 1.7;
   overflow-x: hidden;
+  position: relative;
 }
 
 #root {
@@ -73,11 +86,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -85,31 +100,31 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-gold-dark);
-  border: 2px solid var(--bg-deep);
+  background: var(--accent-teal-dark);
+  border: 3px solid var(--bg-deep);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold);
+  background: var(--accent-teal);
 }
 
 /* Typography Utility */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   color: var(--text-main);
-  font-weight: 500;
-  line-height: 1.3;
+  font-weight: 600;
+  line-height: 1.25;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  letter-spacing: 0.03em;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
   margin-bottom: 1rem;
 }
 
@@ -117,32 +132,33 @@ h2 {
 .section-title {
   text-align: center;
   margin-bottom: 4rem;
+  position: relative;
 }
 
 .section-title h2::after {
   content: '';
   display: block;
-  width: 50px;
-  height: 1px;
-  background: var(--accent-gold);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-rose));
   margin: 1.25rem auto 0;
+  border-radius: var(--radius-full);
   transition: var(--transition-smooth);
 }
 
 .section-title:hover h2::after {
-  width: 100px;
-  background: var(--accent-gold-bright);
+  width: 80px;
 }
 
 .subtitle {
-  font-family: var(--font-serif);
-  font-size: 0.85rem;
-  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--accent-gold);
+  letter-spacing: 0.25em;
+  color: var(--accent-teal);
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   text-align: center;
 }
 
@@ -172,27 +188,27 @@ a {
 }
 
 .section-padding {
-  padding: 7rem 0;
+  padding: 8rem 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 4.5rem 0;
+    padding: 5rem 0;
   }
 }
 
-/* Elegant Gold Buttons */
+/* Elegant Modern Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 1.1rem 2.2rem;
+  padding: 1rem 2rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
@@ -203,79 +219,80 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--accent-gold);
-  color: var(--bg-deep);
-  border-color: var(--accent-gold);
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal-dark));
+  color: var(--charcoal);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(45, 212, 191, 0.25);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-gold-bright);
-  border-color: var(--accent-gold-bright);
-  box-shadow: 0 0 15px rgba(197, 168, 128, 0.3);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--accent-teal-bright), var(--accent-teal));
+  box-shadow: 0 6px 20px rgba(45, 212, 191, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.03);
   color: var(--text-main);
-  border-color: var(--border-gold-bright);
+  border-color: var(--border-gold);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.03);
-  color: var(--accent-gold);
-  border-color: var(--accent-gold);
-  transform: translateY(-1px);
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--accent-teal-bright);
+  border-color: var(--accent-teal);
+  transform: translateY(-2px);
 }
 
 .btn-accent {
-  background-color: var(--sunset-orange);
+  background: linear-gradient(135deg, var(--accent-rose), var(--accent-rose-dark));
   color: var(--snow-white);
-  border-color: var(--sunset-orange);
+  box-shadow: 0 4px 14px rgba(251, 113, 133, 0.25);
 }
 
 .btn-accent:hover {
-  background-color: var(--sunset-dark);
-  border-color: var(--sunset-dark);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--accent-rose-bright), var(--accent-rose));
+  box-shadow: 0 6px 20px rgba(251, 113, 133, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-gold {
-  background-color: var(--accent-gold);
-  color: var(--bg-deep);
-  border-color: var(--accent-gold);
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal-dark));
+  color: var(--charcoal);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(45, 212, 191, 0.25);
 }
 
 .btn-gold:hover {
-  background-color: var(--accent-gold-bright);
-  border-color: var(--accent-gold-bright);
-  color: var(--bg-deep);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--accent-teal-bright), var(--accent-teal));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 212, 191, 0.4);
 }
 
 /* Glassmorphism Classes (Dark luxury) */
 .glass-panel {
-  background: rgba(19, 25, 22, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-gold);
   box-shadow: var(--shadow-medium);
+  border-radius: var(--radius-md);
 }
 
 .glass-panel-dark {
-  background: rgba(8, 11, 9, 0.9);
+  background: rgba(9, 13, 22, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-gold-bright);
+  border: 1px solid var(--border-rose);
   box-shadow: var(--shadow-premium);
+  border-radius: var(--radius-md);
 }
 
 /* Luxury Cards */
 .luxury-card {
   background: var(--bg-card);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   transition: var(--transition-smooth);
@@ -285,9 +302,9 @@ a {
 }
 
 .luxury-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-premium);
-  border-color: var(--accent-gold);
+  border-color: var(--accent-teal);
   background-color: var(--bg-card-hover);
 }
 
@@ -326,8 +343,9 @@ a {
   border: 1px solid var(--border-gold);
   padding: 0.5rem 1.25rem;
   border-radius: var(--radius-sm);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 0.05em;
   box-shadow: var(--shadow-medium);
   pointer-events: none;
@@ -354,14 +372,30 @@ a {
   border: 0;
 }
 
-@keyframes pulse-gold {
-  0% { box-shadow: 0 0 0 0 rgba(197, 168, 128, 0.4); }
-  70% { box-shadow: 0 0 0 12px rgba(197, 168, 128, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(197, 168, 128, 0); }
+/* Glow/Pulse Animations */
+@keyframes pulse-teal {
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(45, 212, 191, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
 }
 
 .pulse-gold-effect {
-  animation: pulse-gold 2.5s infinite;
+  animation: pulse-teal 2.5s infinite;
+}
+
+/* Gradient text utility */
+.gradient-text-aurora {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal-bright), var(--accent-rose));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-sunset {
+  background: linear-gradient(135deg, var(--accent-rose), var(--accent-rose-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Form Styles */
@@ -370,27 +404,28 @@ input, select, textarea {
   padding: 1rem 1.25rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-gold);
-  background-color: var(--bg-deep);
+  background-color: rgba(3, 7, 18, 0.6);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-main);
   transition: var(--transition-fast);
+  backdrop-filter: blur(5px);
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.15);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.15);
 }
 
 label {
   display: block;
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--accent-gold);
+  color: var(--accent-teal);
   margin-bottom: 0.5rem;
 }
 
